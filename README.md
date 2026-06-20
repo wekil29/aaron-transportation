@@ -16,13 +16,14 @@ npm run build
 npm run preview
 ```
 
-The build outputs to `docs/` so GitHub Pages can publish from the `main` branch `/docs` folder.
+The build outputs to `docs/` so GitHub Pages can publish from the `main` branch `/docs` folder. The post-build helper in `scripts/create-static-routes.mjs` creates route-level `index.html` files so clean URLs return 200 responses on GitHub Pages.
 
 ## Project Structure
 
 - `src/config/site.ts`: central content, contact details, service areas, services, fleet data, testimonials, FAQ, SEO metadata, social placeholders, and hidden future vehicle-sales settings.
 - `src/components/`: reusable layout, cards, forms, metadata, and CTA components.
 - `src/pages/`: route-level pages for Home, Services, Fleet, Service Areas, About, Quote, Contact, FAQ, hidden Vehicle Sales, and 404.
+- `scripts/create-static-routes.mjs`: copies built HTML to route folders for GitHub Pages clean URLs.
 - `public/robots.txt` and `public/sitemap.xml`: SEO crawl files for GitHub Pages.
 
 ## Placeholder Values To Replace
