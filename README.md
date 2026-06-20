@@ -1,73 +1,46 @@
-# React + TypeScript + Vite
+# Aaron Transportation Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Premium, mobile-first React + TypeScript marketing website for Aaron Transportation.
 
-Currently, two official plugins are available:
+## Local Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Production build:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
 ```
+
+The build outputs to `docs/` so GitHub Pages can publish from the `main` branch `/docs` folder.
+
+## Project Structure
+
+- `src/config/site.ts`: central content, contact details, service areas, services, fleet data, testimonials, FAQ, SEO metadata, social placeholders, and hidden future vehicle-sales settings.
+- `src/components/`: reusable layout, cards, forms, metadata, and CTA components.
+- `src/pages/`: route-level pages for Home, Services, Fleet, Service Areas, About, Quote, Contact, FAQ, hidden Vehicle Sales, and 404.
+- `public/robots.txt` and `public/sitemap.xml`: SEO crawl files for GitHub Pages.
+
+## Placeholder Values To Replace
+
+- Phone: `(555) 123-4567`
+- Email: `info@aarontransportation.com`
+- Address: `123 Main Street, Dallas, TX 75201`
+- Service area copy: Dallas-Fort Worth and nearby city list
+- Business history, driver standards, insurance/licensing language, cancellation policy, deposit policy
+- Vehicle names, photos, passenger capacity, luggage capacity, and amenities
+- Testimonials
+- Social media URLs
+- Future car-sales route settings if the business owner confirms vehicle sales
+
+## Forms
+
+Quote and contact forms currently use client-side validation and placeholder success handling. They are structured to connect later to email, CRM, Google Sheets, SMS, a database, Stripe, or booking software.
+
+## Out Of Scope In This Launch
+
+Live availability, real-time pricing, dispatch dashboards, accounts, payments, automated SMS confirmations, CRM integration, blog management, multilingual content, and full vehicle-sales inventory management are intentionally not implemented.

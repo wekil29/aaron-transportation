@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wekil29.github.io/aaron-transportation/sitemap.xml
