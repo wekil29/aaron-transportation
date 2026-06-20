@@ -1,3 +1,5 @@
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
 export const siteConfig = {
   siteUrl: 'https://wekil29.github.io/aaron-transportation/',
   business: {
@@ -128,8 +130,7 @@ export const siteConfig = {
         'Polished limousine rentals for formal evenings, milestone celebrations, VIP arrivals, and special city nights.',
       benefits: ['Elegant arrival experience', 'Hourly itinerary flexibility', 'Group-ready amenities'],
       vehicle: 'Stretch Limousine',
-      image:
-        'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=80',
+      image: publicAsset('images/stretch-limousine.jpg'),
     },
     {
       slug: 'weddings',
@@ -217,8 +218,7 @@ export const siteConfig = {
       passengers: 'Up to 10',
       luggage: 'Limited event storage',
       amenities: ['Lounge seating', 'Ambient lighting', 'Celebration-ready cabin', 'Formal arrival styling'],
-      image:
-        'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=80',
+      image: publicAsset('images/stretch-limousine.jpg'),
     },
     {
       name: 'Premium Sprinter Van',
