@@ -10,9 +10,9 @@ export const siteConfig = {
     hours: 'Available 24/7 by reservation',
   },
   contact: {
-    phone: '(555) 123-4567',
-    phoneHref: 'tel:+15551234567',
-    textHref: 'sms:+15551234567',
+    phone: '469-268-0230',
+    phoneHref: 'tel:+14692680230',
+    textHref: 'sms:+14692680230',
     email: 'info@aarontransportation.com',
     emailHref: 'mailto:info@aarontransportation.com',
     address: '123 Main Street, Dallas, TX 75201',
@@ -56,7 +56,7 @@ export const siteConfig = {
       path: '/fleet',
       title: 'Luxury Fleet | Aaron Transportation',
       description:
-        'View placeholder fleet options including luxury sedans, executive SUVs, stretch limousines, sprinter vans, and party buses.',
+        'View placeholder fleet options including luxury sedans, executive SUVs, stretch limousines, and party buses.',
     },
     {
       path: '/service-areas',
@@ -96,8 +96,7 @@ export const siteConfig = {
     },
   ],
   images: {
-    hero:
-      'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1800&q=82',
+    hero: publicAsset('images/hero-stretch-limousine-night.jpg'),
     chauffeur:
       'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1400&q=80',
     airport:
@@ -110,7 +109,7 @@ export const siteConfig = {
   heroStats: [
     { value: '24/7', label: 'Reservation availability' },
     { value: 'DFW', label: 'Airport and city coverage' },
-    { value: '5', label: 'Fleet categories prepared' },
+    { value: '4', label: 'Fleet categories prepared' },
   ],
   services: [
     {
@@ -148,7 +147,7 @@ export const siteConfig = {
       summary:
         'Event transportation designed around safe, stylish arrivals for school events, galas, and private celebrations.',
       benefits: ['Parent-friendly quote process', 'Group capacity options', 'Clear pickup and return timing'],
-      vehicle: 'Stretch Limousine, Sprinter Van, or Party Bus',
+      vehicle: 'Stretch Limousine or Party Bus',
       image:
         'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
     },
@@ -168,7 +167,7 @@ export const siteConfig = {
       summary:
         'Private transportation for birthdays, dinners, concerts, nightlife routes, and group celebrations.',
       benefits: ['Multiple-stop itinerary planning', 'Comfortable group seating', 'Late-night reservation support'],
-      vehicle: 'Sprinter Van or Party Bus',
+      vehicle: 'Stretch Limousine or Party Bus',
       image:
         'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=1200&q=80',
     },
@@ -188,7 +187,7 @@ export const siteConfig = {
       summary:
         'Private long-distance rides for regional travel, private transfers, and out-of-area availability requests.',
       benefits: ['Comfort for longer routes', 'Custom pickup and drop-off planning', 'Availability confirmation before booking'],
-      vehicle: 'Executive SUV or Sprinter Van',
+      vehicle: 'Executive SUV or Luxury Sedan',
       image:
         'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
     },
@@ -219,15 +218,6 @@ export const siteConfig = {
       luggage: 'Limited event storage',
       amenities: ['Lounge seating', 'Ambient lighting', 'Celebration-ready cabin', 'Formal arrival styling'],
       image: publicAsset('images/stretch-limousine.jpg'),
-    },
-    {
-      name: 'Premium Sprinter Van',
-      category: 'Sprinter Van',
-      passengers: 'Up to 14',
-      luggage: 'Group luggage capacity',
-      amenities: ['High-roof cabin', 'Group seating', 'Event transfer comfort', 'Easy boarding'],
-      image:
-        'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
     },
     {
       name: 'Celebration Party Bus',

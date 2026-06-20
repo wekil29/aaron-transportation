@@ -26,7 +26,7 @@ export function QuotePage() {
             <SectionHeading
               eyebrow="Booking details"
               title="Quote request form"
-              copy="Required fields are validated before the placeholder success state appears. Optional fields prepare the form for airport, event, hourly, and return-trip workflows."
+              copy="Only your name and phone number are required. Optional trip details can help Aaron Transportation prepare a faster availability and quote follow-up."
             />
             <div className="form-note">
               <strong>Backend-ready structure</strong>
