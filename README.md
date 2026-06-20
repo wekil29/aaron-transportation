@@ -28,7 +28,7 @@ The build outputs to `docs/` so GitHub Pages can publish from the `main` branch 
 
 ## Placeholder Values To Replace
 
-- Phone: `(555) 123-4567`
+- Phone: `469-268-0230`
 - Email: `info@aarontransportation.com`
 - Address: `123 Main Street, Dallas, TX 75201`
 - Service area copy: Dallas-Fort Worth and nearby city list
@@ -40,7 +40,7 @@ The build outputs to `docs/` so GitHub Pages can publish from the `main` branch 
 
 ## Forms
 
-Quote and contact forms currently use client-side validation and placeholder success handling. They are structured to connect later to email, CRM, Google Sheets, SMS, a database, Stripe, or booking software.
+Quote and contact forms currently use client-side validation and placeholder success handling. The quote form only requires full name and phone number, with optional trip details grouped for easier mobile completion. Forms are structured to connect later to email, CRM, Google Sheets, SMS, a database, Stripe, or booking software.
 
 ## Out Of Scope In This Launch
 

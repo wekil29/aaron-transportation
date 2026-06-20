@@ -822,6 +822,37 @@ summary:focus-visible {
   font-weight: 710;
 }
 
+.optional-label,
+.optional-details summary span {
+  color: var(--muted);
+  font-size: 0.88em;
+  font-style: normal;
+  font-weight: 650;
+}
+
+.optional-details {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.optional-details summary {
+  cursor: pointer;
+  color: var(--black);
+  font-weight: 820;
+}
+
+.optional-details[open] summary {
+  margin-bottom: 16px;
+}
+
+.optional-details__textarea {
+  margin-top: 16px;
+}
+
 .field--honeypot {
   position: absolute;
   left: -9999px;

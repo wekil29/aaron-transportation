@@ -45,38 +45,9 @@ const initialValues: QuoteValues = {
 
 type QuoteErrors = Partial<Record<keyof QuoteValues, string>>
 
-const requiredFields: Array<keyof QuoteValues> = [
-  'fullName',
-  'phone',
-  'email',
-  'pickupLocation',
-  'dropoffLocation',
-  'pickupDate',
-  'pickupTime',
-  'passengers',
-  'serviceType',
-  'vehiclePreference',
-  'preferredContact',
-]
-
-const labels: Record<keyof QuoteValues, string> = {
-  fullName: 'Full Name',
-  phone: 'Phone Number',
-  email: 'Email Address',
-  pickupLocation: 'Pickup Location',
-  dropoffLocation: 'Drop-off Location',
-  pickupDate: 'Pickup Date',
-  pickupTime: 'Pickup Time',
-  returnDateTime: 'Return Date and Time',
-  passengers: 'Number of Passengers',
-  serviceType: 'Service Type',
-  vehiclePreference: 'Vehicle Preference',
-  hoursNeeded: 'Number of Hours Needed',
-  flightNumber: 'Flight Number',
-  specialRequests: 'Special Requests',
-  preferredContact: 'Preferred Contact Method',
-  consent: 'Consent',
-  companyWebsite: 'Company Website',
+function hasValidPhoneFormat(phone: string) {
+  const digits = phone.replace(/\D/g, '')
+  return digits.length === 10 || (digits.length === 11 && digits.startsWith('1'))
 }
 
 export function QuoteForm() {
@@ -89,7 +60,8 @@ export function QuoteForm() {
   ) {
     const target = event.target
     const { name } = target
-    const value = target instanceof HTMLInputElement && target.type === 'checkbox' ? target.checked : target.value
+    const value =
+      target instanceof HTMLInputElement && target.type === 'checkbox' ? target.checked : target.value
 
     setValues((current) => ({
       ...current,
@@ -102,13 +74,12 @@ export function QuoteForm() {
   function validate() {
     const nextErrors: QuoteErrors = {}
 
-    requiredFields.forEach((field) => {
-      if (!String(values[field]).trim()) {
-        nextErrors[field] = `${labels[field]} is required.`
-      }
-    })
-
-    if (!values.consent) nextErrors.consent = 'Consent is required before Aaron Transportation can follow up.'
+    if (!values.fullName.trim()) nextErrors.fullName = 'Full Name is required.'
+    if (!values.phone.trim()) {
+      nextErrors.phone = 'Phone Number is required.'
+    } else if (!hasValidPhoneFormat(values.phone)) {
+      nextErrors.phone = 'Enter a valid 10-digit phone number.'
+    }
     if (values.companyWebsite) nextErrors.companyWebsite = 'Submission could not be processed.'
 
     setErrors(nextErrors)
@@ -136,65 +107,149 @@ export function QuoteForm() {
       ) : null}
 
       <div className="form-grid form-grid--two">
-        <TextField label="Full Name" name="fullName" value={values.fullName} error={errors.fullName} onChange={handleChange} required />
-        <TextField label="Phone Number" name="phone" type="tel" value={values.phone} error={errors.phone} onChange={handleChange} required />
-        <TextField label="Email Address" name="email" type="email" value={values.email} error={errors.email} onChange={handleChange} required />
-        <TextField label="Pickup Location" name="pickupLocation" value={values.pickupLocation} error={errors.pickupLocation} onChange={handleChange} required />
-        <TextField label="Drop-off Location" name="dropoffLocation" value={values.dropoffLocation} error={errors.dropoffLocation} onChange={handleChange} required />
-        <TextField label="Pickup Date" name="pickupDate" type="date" value={values.pickupDate} error={errors.pickupDate} onChange={handleChange} required />
-        <TextField label="Pickup Time" name="pickupTime" type="time" value={values.pickupTime} error={errors.pickupTime} onChange={handleChange} required />
-        <TextField label="Return Date and Time" name="returnDateTime" type="datetime-local" value={values.returnDateTime} error={errors.returnDateTime} onChange={handleChange} />
-        <TextField label="Number of Passengers" name="passengers" type="number" value={values.passengers} error={errors.passengers} onChange={handleChange} required min="1" />
-        <SelectField
-          label="Service Type"
-          name="serviceType"
-          value={values.serviceType}
-          error={errors.serviceType}
+        <TextField
+          label="Full Name"
+          name="fullName"
+          value={values.fullName}
+          error={errors.fullName}
           onChange={handleChange}
-          options={siteConfig.services.map((service) => service.title)}
           required
         />
-        <SelectField
-          label="Vehicle Preference"
-          name="vehiclePreference"
-          value={values.vehiclePreference}
-          error={errors.vehiclePreference}
+        <TextField
+          label="Phone Number"
+          name="phone"
+          type="tel"
+          value={values.phone}
+          error={errors.phone}
           onChange={handleChange}
-          options={siteConfig.fleet.map((vehicle) => vehicle.category)}
           required
         />
-        <TextField label="Number of Hours Needed" name="hoursNeeded" type="number" value={values.hoursNeeded} error={errors.hoursNeeded} onChange={handleChange} min="1" />
-        <TextField label="Flight Number" name="flightNumber" value={values.flightNumber} error={errors.flightNumber} onChange={handleChange} />
-        <SelectField
-          label="Preferred Contact Method"
-          name="preferredContact"
-          value={values.preferredContact}
-          error={errors.preferredContact}
-          onChange={handleChange}
-          options={['Phone call', 'Text message', 'Email']}
-          required
-        />
-        <label className="field field--honeypot" aria-hidden="true">
-          <span>Company Website</span>
-          <input
-            tabIndex={-1}
-            autoComplete="off"
-            name="companyWebsite"
-            value={values.companyWebsite}
+      </div>
+
+      <details className="optional-details">
+        <summary>
+          Additional trip details <span>(optional)</span>
+        </summary>
+        <div className="form-grid form-grid--two">
+          <TextField
+            label="Email Address"
+            name="email"
+            type="email"
+            value={values.email}
+            error={errors.email}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Pickup Location"
+            name="pickupLocation"
+            value={values.pickupLocation}
+            error={errors.pickupLocation}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Drop-off Location"
+            name="dropoffLocation"
+            value={values.dropoffLocation}
+            error={errors.dropoffLocation}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Pickup Date"
+            name="pickupDate"
+            type="date"
+            value={values.pickupDate}
+            error={errors.pickupDate}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Pickup Time"
+            name="pickupTime"
+            type="time"
+            value={values.pickupTime}
+            error={errors.pickupTime}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Return Date and Time"
+            name="returnDateTime"
+            type="datetime-local"
+            value={values.returnDateTime}
+            error={errors.returnDateTime}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Number of Passengers"
+            name="passengers"
+            type="number"
+            value={values.passengers}
+            error={errors.passengers}
+            onChange={handleChange}
+            min="1"
+          />
+          <SelectField
+            label="Service Type"
+            name="serviceType"
+            value={values.serviceType}
+            error={errors.serviceType}
+            onChange={handleChange}
+            options={siteConfig.services.map((service) => service.title)}
+          />
+          <SelectField
+            label="Vehicle Preference"
+            name="vehiclePreference"
+            value={values.vehiclePreference}
+            error={errors.vehiclePreference}
+            onChange={handleChange}
+            options={siteConfig.fleet.map((vehicle) => vehicle.category)}
+          />
+          <TextField
+            label="Number of Hours Needed"
+            name="hoursNeeded"
+            type="number"
+            value={values.hoursNeeded}
+            error={errors.hoursNeeded}
+            onChange={handleChange}
+            min="1"
+          />
+          <TextField
+            label="Flight Number"
+            name="flightNumber"
+            value={values.flightNumber}
+            error={errors.flightNumber}
+            onChange={handleChange}
+          />
+          <SelectField
+            label="Preferred Contact Method"
+            name="preferredContact"
+            value={values.preferredContact}
+            error={errors.preferredContact}
+            onChange={handleChange}
+            options={['Phone call', 'Text message', 'Email']}
+          />
+          <label className="field field--honeypot" aria-hidden="true">
+            <span>Company Website</span>
+            <input
+              tabIndex={-1}
+              autoComplete="off"
+              name="companyWebsite"
+              value={values.companyWebsite}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+
+        <label className="field optional-details__textarea">
+          <span>
+            Special Requests <em className="optional-label">(optional)</em>
+          </span>
+          <textarea
+            name="specialRequests"
+            rows={5}
+            value={values.specialRequests}
             onChange={handleChange}
           />
         </label>
-      </div>
-
-      <label className="field">
-        <span>Special Requests</span>
-        <textarea
-          name="specialRequests"
-          rows={5}
-          value={values.specialRequests}
-          onChange={handleChange}
-        />
-      </label>
+      </details>
 
       <label className="checkbox-field">
         <input
@@ -203,11 +258,12 @@ export function QuoteForm() {
           checked={values.consent}
           onChange={handleChange}
           aria-invalid={Boolean(errors.consent)}
-          required
         />
-        <span>I agree to be contacted about this quote request by phone, text, or email.</span>
+        <span>
+          I agree to be contacted about this quote request by phone, text, or email.{' '}
+          <em className="optional-label">(optional)</em>
+        </span>
       </label>
-      {errors.consent ? <small className="field-error">{errors.consent}</small> : null}
 
       <p className="form-disclaimer">
         Final booking availability, vehicle assignment, and price require confirmation by Aaron Transportation.
@@ -246,7 +302,9 @@ function TextField({
 
   return (
     <label className="field">
-      <span>{label}</span>
+      <span>
+        {label} {!required ? <em className="optional-label">(optional)</em> : null}
+      </span>
       <input
         name={name}
         type={type}
@@ -256,6 +314,7 @@ function TextField({
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : undefined}
         required={required}
+        inputMode={type === 'tel' ? 'tel' : undefined}
       />
       {error ? (
         <small id={errorId} className="field-error">
@@ -281,7 +340,9 @@ function SelectField({ label, name, value, error, options, required, onChange }:
 
   return (
     <label className="field">
-      <span>{label}</span>
+      <span>
+        {label} {!required ? <em className="optional-label">(optional)</em> : null}
+      </span>
       <select
         name={name}
         value={value}
