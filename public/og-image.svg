@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Aaron Transportation">
+  <rect width="1200" height="630" fill="#070707"/>
+  <rect x="54" y="54" width="1092" height="522" rx="8" fill="#161616" stroke="#c7a24b" stroke-width="3"/>
+  <text x="92" y="170" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#c7a24b">DALLAS-FORT WORTH LUXURY TRANSPORTATION</text>
+  <text x="92" y="292" font-family="Arial, sans-serif" font-size="86" font-weight="800" fill="#ffffff">Aaron Transportation</text>
+  <text x="92" y="372" font-family="Arial, sans-serif" font-size="34" fill="#d9d3c5">Limo rental, airport transfers, event travel, and private chauffeur service.</text>
+  <rect x="92" y="444" width="308" height="70" rx="8" fill="#c7a24b"/>
+  <text x="246" y="491" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="800" fill="#070707">Request a Quote</text>
+</svg>
